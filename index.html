@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <ul>
+        {% for employee in employees %}
+            <li>{{ employee[1] }} - {{ employee[2] }} - {{ employee[3] }}
+                <a href="{{ url_for('edit', employee_id=employee[0]) }}">Edit</a>
+                <a href="{{ url_for('delete', employee_id=employee[0]) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('add') }}">Add Employee</a></p>
+</body>
+</html>
