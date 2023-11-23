@@ -17,7 +17,7 @@ cursor.execute('''
 conn.commit()
 conn.close()
 
-#Doing CRUDoperations
+#Doing CRUD operations
 def get_all_employees():
     conn = sqlite3.connect('employees.db')
     cursor = conn.cursor()
