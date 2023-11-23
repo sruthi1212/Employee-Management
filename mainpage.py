@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
 import os
-import sqlite3
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 db_path = os.path.join(script_dir, 'employees.db')
 
 conn = sqlite3.connect(db_path)
-# Rest of the code...
 if not os.path.exists(db_path):
-    # Create the database file
+    # Creating the database file
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute('''
@@ -27,11 +25,13 @@ if not os.access(db_path, os.W_OK):
 with sqlite3.connect(db_path) as conn:
     cursor = conn.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, position TEXT NOT NULL, department TEXT NOT NULL)')
-    # Additional database operations...
+    
 
 
 app = Flask(__name__)
+
 #setting up of SQLite database 
+
 conn = sqlite3.connect('employees.db')
 cursor = conn.cursor()
 cursor.execute('DROP TABLE IF EXISTS employees')
@@ -47,6 +47,7 @@ conn.commit()
 conn.close()
 
 #Doing CRUDoperations
+
 def get_all_employees():
     conn = sqlite3.connect('employees.db')
     cursor = conn.cursor()
@@ -89,6 +90,7 @@ def delete_employee(employee_id):
     conn.close()
 
 #creating Routes
+
 @app.route('/')
 def index():
     employees = get_all_employees()
